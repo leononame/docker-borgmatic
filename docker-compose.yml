@@ -1,0 +1,11 @@
+version: "3"
+services:
+  borgmatic:
+    image: leononame/borgmatic:latest
+    env_file: .env
+    volumes:
+      - /mnt/data:/mnt/source:ro
+      - ./config/ssh:/root/.ssh
+      - ./config/borgmatic.d:/etc/borgmatic.d
+      - ./borg/.config/borg:/root/.config/borg
+      - ./borg/.cache/borg:/root/.cache/borg

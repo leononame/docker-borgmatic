@@ -1,7 +1,7 @@
 FROM alpine:latest as builder
-MAINTAINER b3vis
+MAINTAINER leononame
 ARG BORG_VERSION=1.1.11
-ARG BORGMATIC_VERSION=1.5.1
+ARG BORGMATIC_VERSION=1.5.3
 RUN apk upgrade --no-cache \
     && apk add --no-cache \
     alpine-sdk \
@@ -18,7 +18,7 @@ RUN apk upgrade --no-cache \
     && pip3 install --upgrade llfuse
 
 FROM alpine:latest
-MAINTAINER b3vis
+MAINTAINER leononame
 COPY entry.sh /entry.sh
 RUN apk upgrade --no-cache \
     && apk add --no-cache \
@@ -31,16 +31,24 @@ RUN apk upgrade --no-cache \
     lz4-libs \
     libacl \
     postgresql-client \
+    bash \
     mariadb-client \
     && rm -rf /var/cache/apk/* \
     && chmod 755 /entry.sh
+# msmtp
+RUN apk upgrade --no-cache \
+    && apk add --no-cache \
+    msmtp \
+    && ln -sf /usr/bin/msmtp /usr/sbin/sendmail \
+    && rm -rf /var/cache/apk/* \
+    && chmod 755 /entry.sh
+
 VOLUME /mnt/source
-VOLUME /mnt/borg-repository
 VOLUME /etc/borgmatic.d
 VOLUME /root/.borgmatic
+VOLUME /root/.cache/borg
 VOLUME /root/.config/borg
 VOLUME /root/.ssh
-VOLUME /root/.cache/borg
 COPY --from=builder /usr/lib/python3.8/site-packages /usr/lib/python3.8/
 COPY --from=builder /usr/bin/borg /usr/bin/
 COPY --from=builder /usr/bin/borgfs /usr/bin/
