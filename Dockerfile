@@ -26,13 +26,10 @@ RUN apk upgrade --no-cache \
     sshfs \
     python3 \
     openssl \
-    fuse \
     ca-certificates \
     lz4-libs \
     libacl \
-    postgresql-client \
     bash \
-    mariadb-client \
     && rm -rf /var/cache/apk/* \
     && chmod 755 /entry.sh
 # msmtp
