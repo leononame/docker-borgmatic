@@ -8,9 +8,11 @@ A [borgmatic](https://github.com/witten/borgmatic) container that manages multip
 
 It uses cron to run the backups at a time you can configure in `data/borgmatic.d/crontab.txt`.
 
-### Usage
+## Usage
 
 To set your backup timing and configuration, you will need to create [crontab.txt](data/borgmatic.d/crontab.txt) and your borgmatic [config.yaml](data/borgmatic.d/config.yaml) and mount these files into the `/etc/borgmatic.d/` directory. When the container starts it creates the crontab from `crontab.txt` and starts crond. By cloning this repo in `/opt/docker/`, you will have a working setup to get started.
+
+Create a ssh key and store it in `data/.ssh/borg`
 
 ### Example run command
 
