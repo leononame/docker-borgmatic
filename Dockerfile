@@ -10,12 +10,10 @@ RUN apk upgrade --no-cache \
     lz4-dev \
     acl-dev \
     linux-headers \
-    fuse-dev \
     attr-dev \
     && pip3 install --upgrade pip \
     && pip3 install --upgrade borgbackup==${BORG_VERSION} \
     && pip3 install --upgrade borgmatic==${BORGMATIC_VERSION} \
-    && pip3 install --upgrade llfuse
 
 FROM alpine:latest
 MAINTAINER leononame
