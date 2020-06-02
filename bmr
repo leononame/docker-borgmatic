@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# bmr == borgmatic run
+
+NAME=$1
+UPPERNAME=$(printf '%s\n' "$NAME" | awk '{ print toupper($0) }')
+PASSPHRASE=BORG_PASSPHRASE_$UPPERNAME
+
+shift
+
+PATH=$PATH:/usr/bin BORG_PASSPHRASE=${!PASSPHRASE} /usr/bin/borgmatic -c /etc/borgmatic.d/"$NAME".yaml -v2 --stats "$@"

@@ -1,2 +1,2 @@
 MAILTO=your@email.address
-0 * * * * /etc/borgmatic.d/run.sh config 2>&1
+0 * * * * backup bmr config
