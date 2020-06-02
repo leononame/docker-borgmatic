@@ -1,9 +1,9 @@
-FROM alpine:latest as builder
+FROM alpine:3 as builder
 MAINTAINER leononame
 ARG BORG_VERSION=1.1.11
-ARG BORGMATIC_VERSION=1.5.3
+ARG BORGMATIC_VERSION=1.5.5
 RUN apk upgrade --no-cache \
-    && apk add --no-cache \
+    && apk add \
     alpine-sdk \
     python3-dev \
     openssl-dev \
@@ -11,11 +11,12 @@ RUN apk upgrade --no-cache \
     acl-dev \
     linux-headers \
     attr-dev \
-    && pip3 install --upgrade pip \
-    && pip3 install --upgrade borgbackup==${BORG_VERSION} \
-    && pip3 install --upgrade borgmatic==${BORGMATIC_VERSION} \
+    py-pip \
+    && /usr/bin/pip3 install --upgrade pip \
+    && /usr/bin/pip3 install --upgrade borgbackup==${BORG_VERSION} \
+    && /usr/bin/pip3 install --upgrade borgmatic==${BORGMATIC_VERSION}
 
-FROM alpine:latest
+FROM alpine:3
 MAINTAINER leononame
 COPY entry.sh /entry.sh
 RUN apk upgrade --no-cache \
