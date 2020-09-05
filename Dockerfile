@@ -20,7 +20,7 @@ FROM alpine:3
 MAINTAINER leononame
 COPY entry.sh /entry.sh
 COPY backup /usr/local/bin
-COPY bmr /usr/local/bin
+COPY cronic /usr/local/bin
 RUN apk upgrade --no-cache \
     && apk add --no-cache \
     tzdata \
