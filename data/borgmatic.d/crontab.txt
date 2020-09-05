@@ -1,2 +1,2 @@
 MAILTO=your@email.address
-0 * * * * backup bmr config
+0 * * * * backup bmr example

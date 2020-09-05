@@ -1,7 +1,7 @@
 FROM alpine:3 as builder
 MAINTAINER leononame
-ARG BORG_VERSION=1.1.11
-ARG BORGMATIC_VERSION=1.5.5
+ARG BORG_VERSION=1.1.13
+ARG BORGMATIC_VERSION=1.5.10
 RUN apk upgrade --no-cache \
     && apk add \
     alpine-sdk \

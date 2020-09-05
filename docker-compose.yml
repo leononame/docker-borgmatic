@@ -4,7 +4,7 @@ services:
     build: .
     env_file: .env
     volumes:
-      - /mnt/data:/mnt/source:ro
+      - /data:/mnt/source:ro
       - ./data/ssh:/root/.ssh
       - ./data/borgmatic.d:/etc/borgmatic.d
       - ./data/.config/borg:/root/.config/borg

@@ -1,12 +1,12 @@
 location:
   source_directories:
-    - /mnt/source
+    - /mnt/source/example
   repositories:
     - user@host.example.com:repo
 
 storage:
   compression: lz4
-  archive_name_format: "backup-{now}"
+  archive_name_format: "example-{now}"
 
 retention:
   keep_hourly: 24
@@ -14,15 +14,15 @@ retention:
   keep_weekly: 4
   keep_monthly: 12
   keep_yearly: 10
-  prefix: "backup-"
+  prefix: "example-"
 
 consistency:
   checks:
     - repository
     - archives
   check_last: 10
-  prefix: "backup-"
+  prefix: "example-"
 
 hooks:
   on_error:
-    - echo "Error while creating a backup."
+    - echo "Error while creating a example."
