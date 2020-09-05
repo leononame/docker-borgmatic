@@ -6,4 +6,4 @@ PASSPHRASE=BORG_PASSPHRASE_$UPPERNAME
 
 shift
 
-PATH=$PATH:/usr/bin BORG_PASSPHRASE=${!PASSPHRASE} /usr/bin/borgmatic -c /etc/borgmatic.d/"$NAME".yaml -v2 --stats "$@"
+PATH=$PATH:/usr/bin BORG_PASSPHRASE=${!PASSPHRASE} /usr/bin/borgmatic -c /etc/borgmatic.d/"$NAME".yaml -v2 "$@"
