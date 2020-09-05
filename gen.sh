@@ -39,7 +39,7 @@ else
 fi
 
 UPPERNAME=$(printf '%s\n' "$NAME" | awk '{ print toupper($0) }')
-echo "BORG_PASSPHRASE_${UPPERNAME}="${PASSPHRASE}" >> .env
+echo "BORG_PASSPHRASE_${UPPERNAME}=${PASSPHRASE}" >> .env
 
 cat > data/borgmatic.d/${NAME}.yaml << EOF
 location:
