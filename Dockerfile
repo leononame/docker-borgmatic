@@ -53,5 +53,4 @@ COPY --from=builder /usr/bin/borgmatic /usr/bin/
 COPY --from=builder /usr/bin/generate-borgmatic-config /usr/bin/
 COPY --from=builder /usr/bin/upgrade-borgmatic-config /usr/bin/
 
-COPY msmtprc.sh /usr/bin/msmtprc.sh
 CMD ["/entry.sh"]
