@@ -33,9 +33,9 @@ if [[ ! -f data/borgmatic.d/crontab.txt ]]; then
 fi
 
 if [[ "$HOURLY" == "d" ]]; then
-	echo "$((RANDOM % 60)) 3 * * * backup bmr ${NAME}" >> data/borgmatic.d/crontab.txt
+	echo "$((RANDOM % 60)) 3 * * * cronic backup ${NAME} --stats" >> data/borgmatic.d/crontab.txt
 else
-	echo "$((RANDOM % 60)) * * * * backup bmr ${NAME}" >> data/borgmatic.d/crontab.txt
+	echo "$((RANDOM % 60)) * * * * cronic backup ${NAME} --stats" >> data/borgmatic.d/crontab.txt
 fi
 
 UPPERNAME=$(printf '%s\n' "$NAME" | awk '{ print toupper($0) }')
@@ -72,3 +72,7 @@ hooks:
     - echo "Error while creating a backup for ${NAME}."
 
 EOF
+
+echo ""
+echo ""
+echo "Finished. After starting the container, init the repository: docker-compose exec borgmatic backup ${NAME} --init --encryption repokey-blake2"
